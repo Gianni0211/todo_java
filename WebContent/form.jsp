@@ -69,9 +69,9 @@ input {
 		<form>
 			<div class="input-container">
 				<label for="title" class="label">Inserisci il titolo</label> <input
-					id="title" type="text" name="title" placeholder="e.s. Fare la spesa" />
+					id="title" type="text" value="${sessionScope.todo.title}" name="title" placeholder="e.s. Fare la spesa" />
 				<label for="description" class="label">Inserisci il titolo</label>
-				 <textarea id="description" rows="4" cols="50" name="description">...</textarea>
+				 <textarea id="description" rows="4"  cols="50" name="description">${sessionScope.todo.description }</textarea>
 				<label for="priority" class="label">Seleziona una priorita</label>
 				 <select id="priority" name="priority">
 					<option value="Bassa">Bassa</option>
@@ -79,40 +79,20 @@ input {
 					<option value="Alta">Alta</option>
 				 </select>
 				<label for="date" class="label">Inserisci una data</label> 
-				<input id="date" type="date" name="date" />
+				<input id="date" value="${sessionScope.todo.date }" type="date" name="date" />
 			</div>
 
-			<button type="submit" formaction="addtodo_servlet" class="btn">Aggiungi attivita</button>
-			<button type="submit" formaction="deleteall_servlet" class="btn-remove">Rimuovi tutte le attivita</button>
+			<button type="submit" formaction="update_servlet" class="btn">Modifica</button>
+			
 			
 
 		</form>
 
 
 
-		<div class="todo-list" id="result"></div>
-		${requestScope.resp}
-		<c:forEach var="task" items="${sessionScope.todoList}">
-		<form>
-           <input readonly class="result" value="${task.title}" name="${task.title}">
-           <p>Descrizione: ${task.description}</p>
-           <p>Priorita: ${task.priority}</p>
-           <p>Data: ${task.date}</p>
-           <button type="submit" formaction="deletetask_servlet"  class="btn-remove">
-           
-           Rimuovi
-           </button>
-            <button type="submit" formaction="showmodifyform_servlet"  class="btn">
-            Modifica
-            </button>
-          </form>
-        </c:forEach>
+		
 		
 		
 		
 
 	</div>
-
-
-
-</body>

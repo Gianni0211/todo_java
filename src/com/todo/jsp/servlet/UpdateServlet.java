@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.TaskClass;
 
-public class DeleteTaskServlet extends HttpServlet {
+public class UpdateServlet extends HttpServlet {
 
 	/**
 	 * 
@@ -20,22 +20,25 @@ public class DeleteTaskServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		TaskClass todo = (TaskClass) request.getSession().getAttribute("todo");
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+		String priority = request.getParameter("priority");
+		String date = (String) request.getParameter("date");
 		ArrayList<TaskClass> todoList = (ArrayList<TaskClass>) request.getSession().getAttribute("todoList");
-		ArrayList<TaskClass> removeList = new ArrayList<TaskClass>();
 		for (TaskClass task : todoList) {
 
-			
-			if (task.getTitle().equals(request.getParameter(task.getTitle()))) {
+			if (task.getTitle().equals(todo.getTitle())) {
+
+				task.setTitle(title);
+				task.setDescription(description);
+				task.setPriority(priority);
+				task.setDate(date);
 				
-				removeList.add(task);
 			}
 
 		}
-		for (TaskClass rem : removeList) {
-			todoList.remove(rem);
-			
-		}
-
 		request.getSession().setAttribute("todoList", todoList);
 		RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 		rd.forward(request, response);

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+  version="2.5">
   <display-name>Todo</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -15,8 +17,8 @@
 
 	</servlet>
 	 <servlet>
-		<servlet-name>ReturnToFormServlet</servlet-name>
-		<servlet-class>com.todo.jsp.servlet.ReturnToFormServlet</servlet-class>
+		<servlet-name>ShowAllTaskServlet</servlet-name>
+		<servlet-class>com.todo.jsp.servlet.ShowAllTaskServlet</servlet-class>
 
 	</servlet>
 	<servlet>
@@ -29,14 +31,24 @@
 		<servlet-class>com.todo.jsp.servlet.DeleteTaskServlet</servlet-class>
 
 	</servlet>
+	<servlet>
+		<servlet-name>ShowModifyFormServlet</servlet-name>
+		<servlet-class>com.todo.jsp.servlet.ShowModifyFormServlet</servlet-class>
+
+	</servlet>
+	<servlet>
+		<servlet-name>UpdateServlet</servlet-name>
+		<servlet-class>com.todo.jsp.servlet.UpdateServlet</servlet-class>
+
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>AddTodoServlet</servlet-name>
 		<url-pattern>/addtodo_servlet</url-pattern>
 
 	</servlet-mapping>
 	<servlet-mapping>
-		<servlet-name>ReturnToFormServlet</servlet-name>
-		<url-pattern>/returntoform_servlet</url-pattern>
+		<servlet-name>ShowAllTaskServlet</servlet-name>
+		<url-pattern>/showall_servlet</url-pattern>
 
 	</servlet-mapping>
 	<servlet-mapping>
@@ -47,6 +59,16 @@
 	<servlet-mapping>
 		<servlet-name>DeleteTaskServlet</servlet-name>
 		<url-pattern>/deletetask_servlet</url-pattern>
+
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ShowModifyFormServlet</servlet-name>
+		<url-pattern>/showmodifyform_servlet</url-pattern>
+
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UpdateServlet</servlet-name>
+		<url-pattern>/update_servlet</url-pattern>
 
 	</servlet-mapping>
 	

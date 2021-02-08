@@ -1,7 +1,6 @@
 package com.todo.jsp.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
@@ -10,45 +9,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.TaskClass;
+
 public class AddTodoServlet extends HttpServlet {
 
-	public ArrayList<String> todoList = new ArrayList<String>();
+	public ArrayList<TaskClass> todoList = new ArrayList<TaskClass>();
 
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String todo = request.getParameter("todo");
 		
-		while (todo.equals("")){
-			request.setAttribute("res", "Inserisci qualcosa");
+		while (request.getParameter("title").equals("") && request.getParameter("date").equals("")) {
+			request.setAttribute("resp", "Inserisci un titolo e una data validi");
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
 		}
-
+		String title = request.getParameter("title");
+		String description = request.getParameter("description");
+		String priority = request.getParameter("priority");
+		String date = (String) request.getParameter("date");
+		
+		TaskClass todo = new TaskClass(title, description, priority, date);
 		todoList.add(todo);
 
-		PrintWriter out = response.getWriter();
-		out.println("<html>");
-		out.println("<head>");
-		out.println("<title>Lista Attivita</title>");
-		out.println("</head>");
-		out.println("<div style=\"text-align: center;\"");
-		out.println("<body>");
-		out.println("<h1>Le tue attività</h1>");
-		for (String task : todoList) {
-			out.println("<form action=\"deletetask_servlet\">" + "<input style=\"outline:none;\" name=\"" + task + "\""
-					+ "value=\"" + task + "\"" + "readonly/>" + "<button type=\"submit\">Rimuovi</button>" + "</form>");
-		}
-		out.println("<form action=\"returntoform_servlet\">" + "<button type=\"submit\">Aggiungi un'altra task</button>"
-				+ "</form>");
+		
 
-		out.println(
-				"<form action=\"deleteall_servlet\">" + "<button type=\"submit\">Cancella tutto </button>" + "</form>");
-		out.println("</div>");
+		
 
-		request.getSession().setAttribute("todoList", todoList);
+		request.setAttribute("todoList", todoList);
+		RequestDispatcher rd = request.getRequestDispatcher("/showall_servlet");
+		rd.forward(request, response);
 
 	}
 
