@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>Todo</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+		<servlet-name>AddTodoServlet</servlet-name>
+		<servlet-class>com.todo.jsp.servlet.AddTodoServlet</servlet-class>
+
+	</servlet>
+	 <servlet>
+		<servlet-name>ReturnToFormServlet</servlet-name>
+		<servlet-class>com.todo.jsp.servlet.ReturnToFormServlet</servlet-class>
+
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteAllServlet</servlet-name>
+		<servlet-class>com.todo.jsp.servlet.DeleteAllServlet</servlet-class>
+
+	</servlet>
+	<servlet>
+		<servlet-name>DeleteTaskServlet</servlet-name>
+		<servlet-class>com.todo.jsp.servlet.DeleteTaskServlet</servlet-class>
+
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AddTodoServlet</servlet-name>
+		<url-pattern>/addtodo_servlet</url-pattern>
+
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ReturnToFormServlet</servlet-name>
+		<url-pattern>/returntoform_servlet</url-pattern>
+
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteAllServlet</servlet-name>
+		<url-pattern>/deleteall_servlet</url-pattern>
+
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DeleteTaskServlet</servlet-name>
+		<url-pattern>/deletetask_servlet</url-pattern>
+
+	</servlet-mapping>
+	
+	
+</web-app>
