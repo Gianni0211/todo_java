@@ -21,7 +21,7 @@ public class AddTodoServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		
-		while (request.getParameter("title").equals("") && request.getParameter("date").equals("")) {
+		while (request.getParameter("title").equals("") || request.getParameter("date").equals("")) {
 			request.setAttribute("resp", "Inserisci un titolo e una data validi");
 			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
 			rd.forward(request, response);
