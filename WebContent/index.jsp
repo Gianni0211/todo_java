@@ -42,7 +42,22 @@ input {
 
 
 .todo-list {
-	margin-top: 30px;
+	
+	width: auto;
+	align-self: start;
+	margin-left: 70px;
+}
+
+.todo{
+ display: flex;
+ flex-direction: column;
+ width: 300px;
+ align-items: center;
+ justify-content: center;
+ margin-top: 20px;
+ 
+ 
+ 
 }
 
 .result{
@@ -51,6 +66,8 @@ input {
    margin-top: 10px;
    background: none;
    border: none;
+   width: auto;
+   margin-bottom: 15px;
 }
 
 
@@ -90,15 +107,15 @@ input {
 
 
 
-		<div class="todo-list" id="result"></div>
+		
 		${requestScope.resp}
 		<c:forEach var="task" items="${sessionScope.todoList}">
-		<form>
-           <input readonly class="result" value="${task.title}" name="${task.title}">
-           <p>Descrizione: ${task.description}</p>
-           <p>Priorita: ${task.priority}</p>
-           <p>Data: ${task.date}</p>
-           <button type="submit" formaction="deletetask_servlet"  class="btn-remove">
+		<form class="todo">
+         <div class="todo-list"> <span>Titolo: </span> <input readonly class="result" value="${task.title}" name="${task.title}"> </div>
+         <div class="todo-list"> <p>Descrizione: ${task.description}</p> </div>
+         <div class="todo-list"> <p>Priorita: ${task.priority}</p> </div>
+         <div class="todo-list"> <span>Data: </span> <input readonly class="result" value="${task.date}" name="${task.date}"></div>
+           <button type="submit" formaction="deletetask_servlet" style="margin-bottom: 10px;"  class="btn-remove">
            
            Rimuovi
            </button>

@@ -22,18 +22,22 @@ public class DeleteTaskServlet extends HttpServlet {
 			throws ServletException, IOException {
 		ArrayList<TaskClass> todoList = (ArrayList<TaskClass>) request.getSession().getAttribute("todoList");
 		ArrayList<TaskClass> removeList = new ArrayList<TaskClass>();
-		for (TaskClass task : todoList) {
+		
 
+		
+		for (TaskClass task : todoList) {
 			
-			if (task.getTitle().equals(request.getParameter(task.getTitle()))) {
-				
+
+			if (task.getTitle().equals(request.getParameter(task.getTitle())) && task.getDate().equals(request.getParameter(task.getDate()))) {
+
 				removeList.add(task);
+				
 			}
 
 		}
 		for (TaskClass rem : removeList) {
 			todoList.remove(rem);
-			
+
 		}
 
 		request.getSession().setAttribute("todoList", todoList);
