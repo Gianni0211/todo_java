@@ -37,6 +37,7 @@ input {
 	padding: 3px 6px 3px 6px;
 	border-radius: 10px;
 	color: white;
+	margin-right: 10px;
 
 }
 
@@ -70,6 +71,12 @@ input {
    margin-bottom: 15px;
 }
 
+.btn-container{
+display: flex;
+flex-direction: row;
+align-items:center;
+justify-content: center;
+}
 
 </style>
 
@@ -115,13 +122,19 @@ input {
          <div class="todo-list"> <p>Descrizione: ${task.description}</p> </div>
          <div class="todo-list"> <p>Priorita: ${task.priority}</p> </div>
          <div class="todo-list"> <span>Data: </span> <input readonly class="result" value="${task.date}" name="${task.date}"></div>
-           <button type="submit" formaction="deletetask_servlet" style="margin-bottom: 10px;"  class="btn-remove">
+           <div class="btn-container">
+           
+           <button type="submit" formaction="deletetask_servlet"   class="btn-remove">
            
            Rimuovi
            </button>
             <button type="submit" formaction="showmodifyform_servlet"  class="btn">
             Modifica
             </button>
+           
+           </div>
+           
+           
           </form>
         </c:forEach>
 		
